@@ -40,6 +40,12 @@ h2{font:500 clamp(38px,6vw,60px) 'Playfair Display',serif;margin:15px 0 35px}
 .about p,.contact p{color:#aaa;line-height:1.9;font-size:14px}
 .contact{text-align:center;border-top:1px solid #252525}
 .contact a{color:#c4a77c;text-decoration:none}
+.contact-email{display:inline-block;margin-top:5px;font-size:15px}
+.instagram-support{margin-top:65px;padding-top:45px;border-top:1px solid #252525}
+.instagram-support h3{font:500 clamp(25px,4vw,36px) 'Playfair Display',serif;margin:15px 0}
+.instagram-link{display:inline-block;margin:12px 0 25px;font-size:14px;letter-spacing:1px}
+.qr-code{display:block;width:190px;height:190px;object-fit:contain;background:white;padding:10px;margin:15px auto;border-radius:4px}
+.qr-caption{font-size:11px!important;color:#777!important;letter-spacing:1px}
 footer{border-top:1px solid #252525;padding:30px 8%;color:#777;font-size:11px;letter-spacing:2px;display:flex;justify-content:space-between}
 .lightbox{display:none;position:fixed;inset:0;background:#000e;z-index:10;align-items:center;justify-content:center;padding:20px}
 .lightbox img{max-width:95%;max-height:90%;object-fit:contain}
@@ -55,6 +61,7 @@ section{padding:70px 5%}
 .about{grid-template-columns:1fr}
 .about img{height:350px}
 footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
+.qr-code{width:175px;height:175px}
 }
 </style>
 </head>
@@ -98,7 +105,33 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 <div class="kicker">KONTAKT</div>
 <h2>Stwórzmy coś razem.</h2>
 <p>Masz pomysł na wspólny projekt? Napisz do mnie.</p>
-<a href="mailto:twojemail@example.com">twojemail@example.com</a>
+
+<a class="contact-email" href="mailto:specjalizta.cars@gmail.com">
+specjalizta.cars@gmail.com
+</a>
+
+<div class="instagram-support">
+<div class="kicker">WSPARCIE</div>
+<h3>Możesz mnie też wesprzeć na Instagramie.</h3>
+<p>Zaobserwuj mój profil i bądź na bieżąco z nowymi kadrami!</p>
+
+<a class="instagram-link"
+href="https://www.instagram.com/specjalizta/"
+target="_blank"
+rel="noopener noreferrer">
+@SPECJALIZTA ↗
+</a>
+
+<a href="https://www.instagram.com/specjalizta/"
+target="_blank"
+rel="noopener noreferrer">
+<img class="qr-code"
+src="zdjecia/qr-instagram.jpg"
+alt="Kod QR do mojego Instagrama">
+</a>
+
+<p class="qr-caption">ZESKANUJ KOD I ODWIEDŹ MÓJ PROFIL</p>
+</div>
 </section>
 
 <footer>
