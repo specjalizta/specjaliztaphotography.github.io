@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SPECJALIZTA PHOTOGRAPHY</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -22,11 +23,8 @@ h1 em{color:#c4a77c}
 section{padding:100px 8%}
 .kicker{color:#c4a77c;font-size:11px;letter-spacing:4px}
 h2{font:500 clamp(38px,6vw,60px) 'Playfair Display',serif;margin:15px 0 35px}
-.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:25px}
-.filters button{background:none;border:1px solid #444;color:white;padding:10px 16px;cursor:pointer}
-.filters button.active,.filters button:hover{border-color:#c4a77c;color:#c4a77c}
 .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
-.photo{position:relative;overflow:hidden;cursor:pointer}
+.photo{position:relative;overflow:hidden;cursor:pointer;background:#151515}
 .photo img{width:100%;height:350px;object-fit:cover;display:block;transition:.5s}
 .photo:hover img{transform:scale(1.04)}
 .photo p{position:absolute;bottom:0;left:15px;letter-spacing:2px;font-size:11px;text-shadow:0 2px 8px black}
@@ -40,14 +38,19 @@ footer{border-top:1px solid #252525;padding:30px 8%;color:#777;font-size:11px;le
 .lightbox img{max-width:95%;max-height:90%;object-fit:contain}
 .lightbox.show{display:flex}
 @media(max-width:650px){
-header{padding:0 5%}nav a{margin-left:10px;font-size:10px}
-section{padding:70px 5%}.hero{padding:5%;height:75vh}
-.gallery{grid-template-columns:1fr}.photo img{height:300px}
-.about{grid-template-columns:1fr}.about img{height:350px}
+header{padding:0 5%}
+nav a{margin-left:10px;font-size:10px}
+section{padding:70px 5%}
+.hero{padding:5%;height:75vh}
+.gallery{grid-template-columns:1fr}
+.photo img{height:300px}
+.about{grid-template-columns:1fr}
+.about img{height:350px}
 footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -70,39 +73,7 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 <section id="portfolio">
 <div class="kicker">WYBRANE KADRY / 2026</div>
 <h2>Portfolio.</h2>
-<div class="filters">
-<button class="active" data-filter="all">WSZYSTKO</button>
-<button data-filter="nature">NATURA</button>
-<button data-filter="travel">PODRÓŻE</button>
-<button data-filter="details">DETALE</button>
-</div>
-<div class="gallery">
-<!-- ZMIENIAJ ADRESY ZDJĘĆ W SRC -->
-<div class="photo" data-category="nature">
-<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1000" alt="Krajobraz">
-<p>01 / GOLDEN HOUR</p>
-</div>
-<div class="photo" data-category="travel">
-<img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?w=1000" alt="Podróż">
-<p>02 / OPEN ROAD</p>
-</div>
-<div class="photo" data-category="nature">
-<img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1000" alt="Jezioro">
-<p>03 / QUIET PLACES</p>
-</div>
-<div class="photo" data-category="details">
-<img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1000" alt="Morze">
-<p>04 / IN MOTION</p>
-</div>
-<div class="photo" data-category="travel">
-<img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1000" alt="Góry">
-<p>05 / ABOVE CLOUDS</p>
-</div>
-<div class="photo" data-category="details">
-<img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=1000" alt="Światło">
-<p>06 / SOFT LIGHT</p>
-</div>
-</div>
+<div class="gallery" id="gallery"></div>
 </section>
 
 <section class="about" id="about">
@@ -132,30 +103,99 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 </div>
 
 <script>
-const buttons=document.querySelectorAll('[data-filter]');
-const photos=document.querySelectorAll('.photo');
+const imageNames = [
+"foto1.jpg.jpeg",
+"foto2.jpg.jpeg",
+"foto3.jpeg",
+"IMG_3796.jpeg",
+"IMG_3828.jpeg",
+"IMG_3882.jpeg",
+"IMG_3884.jpeg",
+"IMG_3885.jpeg",
+"IMG_3887.jpeg",
+"IMG_4111.jpeg",
+"IMG_4117.jpeg",
+"IMG_4127.jpeg",
+"IMG_4139.jpeg",
+"IMG_4148.jpeg",
+"IMG_4197.jpeg",
+"IMG_4201.jpeg",
+"IMG_4202.jpeg",
+"IMG_4203.jpeg",
+"IMG_4209.jpeg",
+"IMG_4210.jpeg",
+"IMG_4213.jpeg",
+"IMG_4364.jpeg",
+"IMG_4366.jpeg",
+"IMG_4367.jpeg",
+"IMG_4369.jpeg",
+"IMG_4370.jpeg",
+"IMG_4374.jpeg",
+"IMG_4375.jpeg",
+"IMG_4391.jpeg",
+"IMG_4392.jpeg",
+"IMG_4393.jpeg",
+"IMG_4396.jpeg",
+"IMG_4397.jpeg",
+"IMG_4406.jpeg",
+"IMG_4411.jpeg",
+"IMG_4414.jpeg",
+"IMG_4418.jpeg",
+"IMG_4492.jpeg",
+"IMG_4493.jpeg",
+"IMG_4494.jpeg",
+"IMG_4499.jpeg",
+"IMG_4506.jpeg",
+"IMG_4508.jpeg",
+"IMG_4513.jpeg",
+"IMG_4515.jpeg",
+"IMG_4853.jpeg",
+"IMG_4984.jpeg",
+"IMG_4997.jpeg",
+"IMG_5007.jpeg",
+"IMG_5009.jpeg",
+"IMG_5184.jpeg",
+"IMG_5198.jpeg",
+"IMG_5224.jpeg",
+"IMG_6626.jpeg",
+"IMG_6669.jpeg"
+];
 
-buttons.forEach(button=>{
-button.addEventListener('click',()=>{
-buttons.forEach(b=>b.classList.remove('active'));
-button.classList.add('active');
-photos.forEach(photo=>{
-photo.style.display=button.dataset.filter==='all'||photo.dataset.category===button.dataset.filter?'block':'none';
-});
-});
+const gallery = document.getElementById("gallery");
+
+imageNames.forEach((name,index)=>{
+  const photo = document.createElement("div");
+  photo.className = "photo";
+
+  const img = document.createElement("img");
+  img.src = "ulubione/" + name;
+  img.alt = "Fotografia " + (index+1);
+  img.loading = "lazy";
+
+  const caption = document.createElement("p");
+  caption.textContent =
+    String(index+1).padStart(2,"0") + " / SPECJALIZTA PHOTOGRAPHY";
+
+  photo.appendChild(img);
+  photo.appendChild(caption);
+  gallery.appendChild(photo);
 });
 
-const lightbox=document.getElementById('lightbox');
-const bigImage=document.getElementById('bigImage');
+const lightbox = document.getElementById("lightbox");
+const bigImage = document.getElementById("bigImage");
 
-photos.forEach(photo=>{
-photo.addEventListener('click',()=>{
-bigImage.src=photo.querySelector('img').src;
-lightbox.classList.add('show');
-});
+gallery.addEventListener("click",(event)=>{
+  const img = event.target.closest("img");
+  if(!img) return;
+
+  bigImage.src = img.src;
+  lightbox.classList.add("show");
 });
 
-lightbox.addEventListener('click',()=>lightbox.classList.remove('show'));
+lightbox.addEventListener("click",()=>{
+  lightbox.classList.remove("show");
+});
 </script>
+
 </body>
 </html>
