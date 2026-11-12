@@ -168,13 +168,18 @@ imageNames.forEach((name,index)=>{
   photo.className = "photo";
 
   const img = document.createElement("img");
-  img.src = "ulubione/" + name;
+  img.src = "zdjecia/" + name;
   img.alt = "Fotografia " + (index+1);
   img.loading = "lazy";
 
   const caption = document.createElement("p");
   caption.textContent =
     String(index+1).padStart(2,"0") + " / SPECJALIZTA PHOTOGRAPHY";
+
+  img.onerror = () => {
+    photo.style.display = "none";
+    console.error("Nie znaleziono zdjęcia: " + img.src);
+  };
 
   photo.appendChild(img);
   photo.appendChild(caption);
