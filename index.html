@@ -15,7 +15,14 @@ header{height:75px;display:flex;align-items:center;justify-content:space-between
 .logo{letter-spacing:3px;font-size:13px;font-weight:bold}
 .logo span{color:#b89b70}
 nav a{color:#ddd;text-decoration:none;margin-left:25px;font-size:12px}
-.hero{height:85vh;min-height:550px;background:linear-gradient(#0005,#0009),url('zdjecia/IMG_4201.jpeg') center/cover;display:flex;align-items:center;padding:8%}
+.hero{
+height:85vh;
+min-height:550px;
+background:linear-gradient(#0005,#0009),url('zdjecia/IMG_4201.jpeg') center/cover;
+display:flex;
+align-items:center;
+padding:8%
+}
 .hero p{letter-spacing:5px;color:#c4a77c;font-size:11px}
 h1{font:500 clamp(48px,9vw,100px)/1.05 'Playfair Display',serif;margin:15px 0}
 h1 em{color:#c4a77c}
@@ -37,6 +44,7 @@ footer{border-top:1px solid #252525;padding:30px 8%;color:#777;font-size:11px;le
 .lightbox{display:none;position:fixed;inset:0;background:#000e;z-index:10;align-items:center;justify-content:center;padding:20px}
 .lightbox img{max-width:95%;max-height:90%;object-fit:contain}
 .lightbox.show{display:flex}
+
 @media(max-width:650px){
 header{padding:0 5%}
 nav a{margin-left:10px;font-size:10px}
@@ -65,14 +73,14 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 <div class="hero">
 <div>
 <p>FOTOGRAFIA · MOJE KADRY</p>
-<h1>Chwile<br><em>zatrzymane.</em></h1>
+<h1>Moments<br><em>in focus.</em></h1>
 <a href="#portfolio">ODKRYJ PORTFOLIO ↗</a>
 </div>
 </div>
 
 <section id="portfolio">
 <div class="kicker">WYBRANE KADRY / 2026</div>
-<h2>Moje portfolio.</h2>
+<h2>Portfolio.</h2>
 <div class="gallery" id="gallery"></div>
 </section>
 
