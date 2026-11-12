@@ -111,6 +111,16 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 </div>
 
 <script>
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('load', () => {
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+});
+
 const imageNames = [
 "foto1.jpg.jpeg",
 "foto2.jpg.jpeg",
