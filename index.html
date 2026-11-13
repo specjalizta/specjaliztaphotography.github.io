@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -123,6 +123,7 @@ width:100%;height:350px;object-fit:cover;display:block;transition:.5s;
 position:absolute;bottom:0;left:15px;letter-spacing:2px;
 font-size:11px;text-shadow:0 2px 8px black;
 }
+
 .portfolio-tabs{
 display:flex;gap:25px;margin:0 0 35px;border-bottom:1px solid #252525;
 flex-wrap:wrap;
@@ -134,6 +135,7 @@ border-bottom:2px solid transparent;
 }
 .portfolio-tab.active{color:#c4a77c;border-bottom-color:#c4a77c}
 .portfolio-panel[hidden]{display:none}
+
 .reels-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
 .reels-empty{
 grid-column:1/-1;padding:60px 20px;text-align:center;
@@ -143,6 +145,74 @@ border:1px solid #252525;color:#888;line-height:2;font-size:13px;
 max-width:750px;margin:0 auto 30px;text-align:center;
 color:#999;font-size:14px;line-height:2;
 }
+
+/* WYBÓR SEKCJI PORTFOLIO */
+
+.portfolio-home{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+margin-top:45px;
+}
+
+.portfolio-choice{
+min-height:300px;
+padding:30px;
+border:1px solid #292929;
+background:linear-gradient(145deg,#171717,#0b0b0b);
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+text-decoration:none;
+color:#f5f5f5;
+transition:.35s;
+position:relative;
+overflow:hidden;
+}
+
+.portfolio-choice:hover{
+border-color:#c4a77c;
+transform:translateY(-5px);
+}
+
+.portfolio-choice span{
+color:#c4a77c;
+font-size:11px;
+letter-spacing:3px;
+}
+
+.portfolio-choice h3{
+font:500 30px 'Playfair Display',serif;
+margin:15px 0 8px;
+}
+
+.portfolio-choice p{
+color:#999;
+font-size:12px;
+line-height:1.8;
+margin:0;
+}
+
+.portfolio-choice .choice-arrow{
+position:absolute;
+top:25px;
+right:25px;
+font-size:22px;
+color:#c4a77c;
+}
+
+.portfolio-back{
+background:none;
+border:0;
+color:#c4a77c;
+font-family:Inter,sans-serif;
+font-size:11px;
+letter-spacing:2px;
+cursor:pointer;
+margin:0 0 30px;
+padding:0;
+}
+.portfolio-back:hover{color:white}
 
 /* O MNIE */
 
@@ -236,6 +306,8 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 .social-card{width:155px;min-height:155px}
 .portfolio-tabs{gap:12px}
 .portfolio-tab{font-size:10px;letter-spacing:1px}
+.portfolio-home{grid-template-columns:1fr}
+.portfolio-choice{min-height:210px}
 }
 </style>
 </head>
@@ -263,7 +335,7 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 <button data-page="about">O MNIE</button>
 
 <div>
-<button data-page="portfolio" data-tab="photos">PORTFOLIO</button>
+<button data-page="portfolio">PORTFOLIO</button>
 <div class="menu-sub">
 <button data-page="portfolio" data-tab="photos">ZDJĘCIA</button>
 <button data-page="portfolio" data-tab="reels">WIDEO</button>
@@ -383,8 +455,44 @@ target="_blank" rel="noopener noreferrer">
 
 <main class="page" id="portfolio">
 <section>
+
 <div class="kicker">WYBRANE KADRY / 2026</div>
 <h2>Portfolio.</h2>
+
+<!-- EKRAN WYBORU -->
+
+<div class="portfolio-home" id="portfolioHome">
+
+<a href="#" class="portfolio-choice" data-open-tab="photos">
+<span class="choice-arrow">↗</span>
+<span>01 / FOTO</span>
+<h3>Zdjęcia</h3>
+<p>Wybrane kadry, sesje samochodowe i detale.</p>
+</a>
+
+<a href="#" class="portfolio-choice" data-open-tab="reels">
+<span class="choice-arrow">↗</span>
+<span>02 / VIDEO</span>
+<h3>Wideo</h3>
+<p>Materiały filmowe i dynamiczne ujęcia.</p>
+</a>
+
+<a href="#" class="portfolio-choice" data-open-tab="collabs">
+<span class="choice-arrow">↗</span>
+<span>03 / WSPÓŁPRACE</span>
+<h3>Współprace</h3>
+<p>Projekty i realizacje dla firm.</p>
+</a>
+
+</div>
+
+<!-- ZAWARTOŚĆ SEKCJI -->
+
+<div id="portfolioContent" hidden>
+
+<button class="portfolio-back" id="portfolioBack">
+← WRÓĆ DO PORTFOLIO
+</button>
 
 <div class="portfolio-tabs">
 <button class="portfolio-tab active" data-tab="photos">ZDJĘCIA</button>
@@ -420,6 +528,7 @@ W tym miejscu znajdziesz materiały przygotowane dla firm, sklepów i serwisów.
 </div>
 </div>
 
+</div>
 </section>
 </main>
 
@@ -530,8 +639,12 @@ button.addEventListener("click",()=>{
 const pageName=button.dataset.page;
 showPage(pageName);
 
-if(pageName==="portfolio" && button.dataset.tab){
+if(pageName==="portfolio"){
+if(button.dataset.tab){
 selectPortfolioTab(button.dataset.tab);
+}else{
+showPortfolioHome();
+}
 }
 });
 });
@@ -548,7 +661,7 @@ showPage(link.dataset.goto);
 document.getElementById("heroPortfolio").addEventListener("click",event=>{
 event.preventDefault();
 showPage("portfolio");
-selectPortfolioTab("photos");
+showPortfolioHome();
 });
 
 /* KAFELKI NA STRONIE GŁÓWNEJ */
@@ -571,21 +684,43 @@ showPage("portfolio");
 selectPortfolioTab("collabs");
 });
 
-/* ZAKŁADKI PORTFOLIO */
+/* WYBÓR SEKCJI PORTFOLIO */
 
 const portfolioTabs=document.querySelectorAll(".portfolio-tab");
 const photosPanel=document.getElementById("photos-panel");
 const reelsPanel=document.getElementById("reels-panel");
 const collabsPanel=document.getElementById("collabs-panel");
 
+const portfolioHome=document.getElementById("portfolioHome");
+const portfolioContent=document.getElementById("portfolioContent");
+const portfolioBack=document.getElementById("portfolioBack");
+
+function showPortfolioHome(){
+portfolioHome.hidden=false;
+portfolioContent.hidden=true;
+}
+
 function selectPortfolioTab(tabName){
+portfolioHome.hidden=true;
+portfolioContent.hidden=false;
+
 portfolioTabs.forEach(button=>{
 button.classList.toggle("active",button.dataset.tab===tabName);
 });
+
 photosPanel.hidden=tabName!=="photos";
 reelsPanel.hidden=tabName!=="reels";
 collabsPanel.hidden=tabName!=="collabs";
 }
+
+document.querySelectorAll("[data-open-tab]").forEach(card=>{
+card.addEventListener("click",event=>{
+event.preventDefault();
+selectPortfolioTab(card.dataset.openTab);
+});
+});
+
+portfolioBack.addEventListener("click",showPortfolioHome);
 
 portfolioTabs.forEach(button=>{
 button.addEventListener("click",()=>{
@@ -704,4 +839,3 @@ closeMenu();
 
 </body>
 </html>
-```
