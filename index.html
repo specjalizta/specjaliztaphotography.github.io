@@ -11,39 +11,133 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:#090909;color:#f5f5f5;font-family:Inter,sans-serif}
-header{height:75px;display:flex;align-items:center;justify-content:space-between;padding:0 8%;border-bottom:1px solid #252525}
+body.menu-open{overflow:hidden}
+
+header{
+height:75px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 5%;
+border-bottom:1px solid #252525;
+position:relative;
+z-index:20;
+background:#090909;
+}
+
 .logo{letter-spacing:3px;font-size:13px;font-weight:bold}
 .logo span{color:#b89b70}
-nav a{color:#ddd;text-decoration:none;margin-left:25px;font-size:12px}
+
+.menu-button{
+background:none;
+border:none;
+color:white;
+font-size:27px;
+cursor:pointer;
+padding:8px;
+line-height:1;
+}
+
+.menu-label{
+font-size:10px;
+letter-spacing:2px;
+margin-left:8px;
+}
+
+.header-left{
+display:flex;
+align-items:center;
+}
+
+.page{display:none}
+.page.active{display:block}
+
 .hero{
-height:85vh;
-min-height:550px;
+min-height:calc(100vh - 75px);
 background:linear-gradient(#0005,#0009),url('zdjecia/IMG_4201.jpeg') center/cover;
 display:flex;
 align-items:center;
-padding:8%
+padding:8%;
 }
-.hero p{letter-spacing:5px;color:#c4a77c;font-size:11px}
-h1{font:500 clamp(48px,9vw,100px)/1.05 'Playfair Display',serif;margin:15px 0}
+
+.hero p{
+letter-spacing:5px;
+color:#c4a77c;
+font-size:11px;
+}
+
+h1{
+font:500 clamp(48px,9vw,100px)/1.05 'Playfair Display',serif;
+margin:15px 0;
+}
+
 h1 em{color:#c4a77c}
-.hero a{display:inline-block;margin-top:25px;border:1px solid white;padding:16px 25px;color:white;text-decoration:none;font-size:11px;letter-spacing:2px}
-section{padding:100px 8%}
-.kicker{color:#c4a77c;font-size:11px;letter-spacing:4px}
-h2{font:500 clamp(38px,6vw,60px) 'Playfair Display',serif;margin:15px 0 35px}
 
-.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
-.photo{position:relative;overflow:hidden;cursor:pointer;background:#151515}
-.photo img{width:100%;height:350px;object-fit:cover;display:block;transition:.5s}
+.hero a{
+display:inline-block;
+margin-top:25px;
+border:1px solid white;
+padding:16px 25px;
+color:white;
+text-decoration:none;
+font-size:11px;
+letter-spacing:2px;
+}
+
+section{padding:90px 8%}
+
+.kicker{
+color:#c4a77c;
+font-size:11px;
+letter-spacing:4px;
+}
+
+h2{
+font:500 clamp(38px,6vw,60px) 'Playfair Display',serif;
+margin:15px 0 35px;
+}
+
+/* PORTFOLIO */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
+
+.photo{
+position:relative;
+overflow:hidden;
+cursor:pointer;
+background:#151515;
+}
+
+.photo img{
+width:100%;
+height:350px;
+object-fit:cover;
+display:block;
+transition:.5s;
+}
+
 .photo:hover img{transform:scale(1.04)}
-.photo p{position:absolute;bottom:0;left:15px;letter-spacing:2px;font-size:11px;text-shadow:0 2px 8px black}
 
-/* ZAKŁADKI PORTFOLIO */
+.photo p{
+position:absolute;
+bottom:0;
+left:15px;
+letter-spacing:2px;
+font-size:11px;
+text-shadow:0 2px 8px black;
+}
+
 .portfolio-tabs{
 display:flex;
-gap:15px;
+gap:25px;
 margin:0 0 35px;
 border-bottom:1px solid #252525;
 }
+
 .portfolio-tab{
 background:none;
 border:none;
@@ -54,12 +148,13 @@ letter-spacing:2px;
 padding:15px 5px;
 cursor:pointer;
 border-bottom:2px solid transparent;
-transition:.3s;
 }
+
 .portfolio-tab.active{
 color:#c4a77c;
 border-bottom-color:#c4a77c;
 }
+
 .portfolio-panel[hidden]{display:none}
 
 .reels-grid{
@@ -67,6 +162,7 @@ display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:15px;
 }
+
 .reel-card{
 background:#151515;
 border:1px solid #252525;
@@ -81,24 +177,12 @@ justify-content:center;
 min-height:220px;
 transition:.3s;
 }
-.reel-card:hover{
-border-color:#c4a77c;
-transform:translateY(-3px);
-}
-.reel-card span{
-color:#c4a77c;
-font-size:28px;
-margin-bottom:15px;
-}
-.reel-card strong{
-font-size:13px;
-letter-spacing:2px;
-}
-.reel-card small{
-color:#888;
-font-size:11px;
-margin-top:10px;
-}
+
+.reel-card:hover{border-color:#c4a77c}
+.reel-card span{color:#c4a77c;font-size:28px;margin-bottom:15px}
+.reel-card strong{font-size:13px;letter-spacing:2px}
+.reel-card small{color:#888;font-size:11px;margin-top:10px}
+
 .reels-empty{
 grid-column:1/-1;
 padding:60px 20px;
@@ -109,27 +193,200 @@ line-height:2;
 font-size:13px;
 }
 
-.about{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-.about img{width:100%;height:450px;object-fit:cover}
-.about p,.contact p{color:#aaa;line-height:1.9;font-size:14px}
-.contact{text-align:center;border-top:1px solid #252525}
-.contact a{color:#c4a77c;text-decoration:none}
-.contact-email{display:inline-block;margin-top:5px;font-size:15px}
-.instagram-support{margin-top:65px;padding-top:45px;border-top:1px solid #252525}
-.instagram-support h3{font:500 clamp(25px,4vw,36px) 'Playfair Display',serif;margin:15px 0}
-.instagram-link{display:inline-block;margin:12px 0 25px;font-size:14px;letter-spacing:1px}
-.qr-code{display:block;width:190px;height:190px;object-fit:contain;background:white;padding:10px;margin:15px auto;border-radius:4px}
-.qr-caption{font-size:11px!important;color:#777!important;letter-spacing:1px}
-footer{border-top:1px solid #252525;padding:30px 8%;color:#777;font-size:11px;letter-spacing:2px;display:flex;justify-content:space-between}
-.lightbox{display:none;position:fixed;inset:0;background:#000e;z-index:10;align-items:center;justify-content:center;padding:20px}
-.lightbox img{max-width:95%;max-height:90%;object-fit:contain}
+/* O MNIE */
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+}
+
+.about img{
+width:100%;
+height:450px;
+object-fit:cover;
+}
+
+.about p,.contact p{
+color:#aaa;
+line-height:1.9;
+font-size:14px;
+}
+
+/* KONTAKT */
+
+.contact{
+text-align:center;
+border-top:1px solid #252525;
+}
+
+.contact a{
+color:#c4a77c;
+text-decoration:none;
+}
+
+.contact-email{
+display:inline-block;
+margin-top:5px;
+font-size:15px;
+}
+
+.instagram-support{
+margin-top:65px;
+padding-top:45px;
+border-top:1px solid #252525;
+}
+
+.instagram-support h3{
+font:500 clamp(25px,4vw,36px) 'Playfair Display',serif;
+margin:15px 0;
+}
+
+.instagram-link{
+display:inline-block;
+margin:12px 0 25px;
+font-size:14px;
+letter-spacing:1px;
+}
+
+.qr-code{
+display:block;
+width:190px;
+height:190px;
+object-fit:contain;
+background:white;
+padding:10px;
+margin:15px auto;
+border-radius:4px;
+}
+
+.qr-caption{
+font-size:11px!important;
+color:#777!important;
+letter-spacing:1px;
+}
+
+/* MENU BOCZNE */
+
+.menu-overlay{
+position:fixed;
+inset:0;
+background:#000b;
+z-index:29;
+display:none;
+}
+
+.menu-overlay.show{display:block}
+
+.side-menu{
+position:fixed;
+top:0;
+left:0;
+bottom:0;
+width:min(330px,85vw);
+background:#101010;
+border-right:1px solid #333;
+z-index:30;
+padding:35px;
+transform:translateX(-100%);
+transition:transform .3s ease;
+}
+
+.side-menu.show{transform:translateX(0)}
+
+.menu-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:65px;
+}
+
+.menu-close{
+background:none;
+border:none;
+color:white;
+font-size:28px;
+cursor:pointer;
+}
+
+.menu-links{
+display:flex;
+flex-direction:column;
+gap:28px;
+}
+
+.menu-links button{
+background:none;
+border:none;
+color:#eee;
+text-align:left;
+font-family:'Playfair Display',serif;
+font-size:27px;
+cursor:pointer;
+padding:0;
+}
+
+.menu-links button:hover{color:#c4a77c}
+
+.menu-sub{
+padding-left:20px;
+display:flex;
+flex-direction:column;
+gap:18px;
+border-left:1px solid #8d7656;
+}
+
+.menu-sub button{
+font-family:Inter,sans-serif;
+font-size:13px;
+letter-spacing:2px;
+color:#aaa;
+}
+
+.menu-footer{
+position:absolute;
+bottom:35px;
+color:#777;
+font-size:10px;
+letter-spacing:2px;
+}
+
+/* STOPKA I LIGHTBOX */
+
+footer{
+border-top:1px solid #252525;
+padding:30px 8%;
+color:#777;
+font-size:11px;
+letter-spacing:2px;
+display:flex;
+justify-content:space-between;
+}
+
+.lightbox{
+display:none;
+position:fixed;
+inset:0;
+background:#000e;
+z-index:50;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.lightbox img{
+max-width:95%;
+max-height:90%;
+object-fit:contain;
+}
+
 .lightbox.show{display:flex}
 
 @media(max-width:650px){
 header{padding:0 5%}
-nav a{margin-left:10px;font-size:10px}
 section{padding:70px 5%}
-.hero{padding:5%;height:75vh}
+.hero{padding:5%;min-height:calc(100vh - 75px)}
 .gallery{grid-template-columns:1fr}
 .photo img{height:300px}
 .about{grid-template-columns:1fr}
@@ -144,29 +401,64 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 <body>
 
 <header>
+<div class="header-left">
+<button class="menu-button" id="menuButton" aria-label="Otwórz menu">☰</button>
+<span class="menu-label">MENU</span>
+</div>
 <div class="logo">SPECJALIZTA<span>.</span></div>
-<nav>
-<a href="#portfolio">PORTFOLIO</a>
-<a href="#about">O MNIE</a>
-<a href="#contact">KONTAKT</a>
-</nav>
 </header>
 
+<!-- MENU BOCZNE -->
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<aside class="side-menu" id="sideMenu">
+<div class="menu-top">
+<div class="logo">SPECJALIZTA<span>.</span></div>
+<button class="menu-close" id="menuClose" aria-label="Zamknij menu">×</button>
+</div>
+
+<div class="menu-links">
+<button data-page="home">STRONA GŁÓWNA</button>
+
+<button data-page="about">O MNIE</button>
+
+<div>
+<button data-page="portfolio">PORTFOLIO</button>
+<div class="menu-sub">
+<button data-page="portfolio" data-tab="photos">ZDJĘCIA</button>
+<button data-page="portfolio" data-tab="reels">ROLKI</button>
+</div>
+</div>
+
+<button data-page="contact">KONTAKT</button>
+</div>
+
+<div class="menu-footer">SPECJALIZTA PHOTOGRAPHY · 2026</div>
+</aside>
+
+<!-- STRONA GŁÓWNA -->
+
+<main class="page active" id="home">
 <div class="hero">
 <div>
 <p>FOTOGRAFIA · MOJE KADRY</p>
 <h1>My<br><em>Photographic Eye.</em></h1>
-<a href="#portfolio">ODKRYJ PORTFOLIO ↗</a>
+<a href="#" id="heroPortfolio">ODKRYJ PORTFOLIO ↗</a>
 </div>
 </div>
+</main>
 
-<section id="portfolio">
+<!-- PORTFOLIO -->
+
+<main class="page" id="portfolio">
+<section>
 <div class="kicker">WYBRANE KADRY / 2026</div>
 <h2>Portfolio.</h2>
 
 <div class="portfolio-tabs">
-<button class="portfolio-tab active" type="button" data-tab="photos">ZDJĘCIA</button>
-<button class="portfolio-tab" type="button" data-tab="reels">ROLKI</button>
+<button class="portfolio-tab active" data-tab="photos">ZDJĘCIA</button>
+<button class="portfolio-tab" data-tab="reels">ROLKI</button>
 </div>
 
 <div class="portfolio-panel" id="photos-panel">
@@ -176,10 +468,13 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 <div class="portfolio-panel" id="reels-panel" hidden>
 <div class="reels-grid" id="reels-grid"></div>
 </div>
-
 </section>
+</main>
 
-<section class="about" id="about">
+<!-- O MNIE -->
+
+<main class="page" id="about">
+<section class="about">
 <img src="zdjecia/IMG_4853(1).jpeg" alt="Moja fotografia">
 <div>
 <div class="kicker">POZNAJ MNIE</div>
@@ -189,8 +484,12 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 <p>Obecnie tworzę sesje motoryzacyjne, materiały wideo oraz dynamiczne rolki, starając się uchwycić charakter każdego samochodu i pokazać go z jak najlepszej strony.</p>
 </div>
 </section>
+</main>
 
-<section class="contact" id="contact">
+<!-- KONTAKT -->
+
+<main class="page" id="contact">
+<section class="contact">
 <div class="kicker">KONTAKT</div>
 <h2>Stwórzmy coś razem.</h2>
 <p>Masz pomysł na wspólny projekt? Napisz do mnie.</p>
@@ -222,6 +521,7 @@ alt="Kod QR do mojego Instagrama">
 <p class="qr-caption">ZESKANUJ KOD I ODWIEDŹ MÓJ PROFIL</p>
 </div>
 </section>
+</main>
 
 <footer>
 <span>© 2026 SPECJALIZTA PHOTOGRAPHY</span>
@@ -233,34 +533,80 @@ alt="Kod QR do mojego Instagrama">
 </div>
 
 <script>
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
+
+/* NAWIGACJA */
+
+const pages = document.querySelectorAll(".page");
+const sideMenu = document.getElementById("sideMenu");
+const menuOverlay = document.getElementById("menuOverlay");
+const menuButton = document.getElementById("menuButton");
+const menuClose = document.getElementById("menuClose");
+
+function openMenu(){
+sideMenu.classList.add("show");
+menuOverlay.classList.add("show");
+document.body.classList.add("menu-open");
 }
 
-window.addEventListener('load', () => {
-  if (!window.location.hash) {
-    window.scrollTo(0, 0);
-  }
+function closeMenu(){
+sideMenu.classList.remove("show");
+menuOverlay.classList.remove("show");
+document.body.classList.remove("menu-open");
+}
+
+function showPage(pageName){
+pages.forEach(page=>{
+page.classList.toggle("active",page.id===pageName);
 });
 
-/* ZAKŁADKI ZDJĘCIA / ROLKI */
-const portfolioTabs = document.querySelectorAll(".portfolio-tab");
-const photosPanel = document.getElementById("photos-panel");
-const reelsPanel = document.getElementById("reels-panel");
+closeMenu();
+window.scrollTo(0,0);
+}
 
-portfolioTabs.forEach(button => {
-  button.addEventListener("click", () => {
-    portfolioTabs.forEach(tab => tab.classList.remove("active"));
-    button.classList.add("active");
+menuButton.addEventListener("click",openMenu);
+menuClose.addEventListener("click",closeMenu);
+menuOverlay.addEventListener("click",closeMenu);
 
-    const selectedTab = button.dataset.tab;
+document.querySelectorAll("[data-page]").forEach(button=>{
+button.addEventListener("click",()=>{
+const pageName=button.dataset.page;
+showPage(pageName);
 
-    photosPanel.hidden = selectedTab !== "photos";
-    reelsPanel.hidden = selectedTab !== "reels";
-  });
+if(pageName==="portfolio" && button.dataset.tab){
+selectPortfolioTab(button.dataset.tab);
+}
+});
+});
+
+document.getElementById("heroPortfolio").addEventListener("click",event=>{
+event.preventDefault();
+showPage("portfolio");
+selectPortfolioTab("photos");
+});
+
+/* ZAKŁADKI PORTFOLIO */
+
+const portfolioTabs=document.querySelectorAll(".portfolio-tab");
+const photosPanel=document.getElementById("photos-panel");
+const reelsPanel=document.getElementById("reels-panel");
+
+function selectPortfolioTab(tabName){
+portfolioTabs.forEach(button=>{
+button.classList.toggle("active",button.dataset.tab===tabName);
+});
+
+photosPanel.hidden=tabName!=="photos";
+reelsPanel.hidden=tabName!=="reels";
+}
+
+portfolioTabs.forEach(button=>{
+button.addEventListener("click",()=>{
+selectPortfolioTab(button.dataset.tab);
+});
 });
 
 /* ZDJĘCIA */
+
 const imageNames = [
 "foto1.jpg.jpeg",
 "foto2.jpg.jpeg",
@@ -319,78 +665,88 @@ const imageNames = [
 "IMG_6669.jpeg"
 ];
 
-const gallery = document.getElementById("gallery");
+const gallery=document.getElementById("gallery");
 
 imageNames.forEach((name,index)=>{
-  const photo = document.createElement("div");
-  photo.className = "photo";
+const photo=document.createElement("div");
+photo.className="photo";
 
-  const img = document.createElement("img");
-  img.src = "zdjecia/" + name;
-  img.alt = "Fotografia " + (index+1);
-  img.loading = "lazy";
+const img=document.createElement("img");
+img.src="zdjecia/"+name;
+img.alt="Fotografia "+(index+1);
+img.loading="lazy";
 
-  const caption = document.createElement("p");
-  caption.textContent =
-    String(index+1).padStart(2,"0") + " / SPECJALIZTA PHOTOGRAPHY";
+const caption=document.createElement("p");
+caption.textContent=
+String(index+1).padStart(2,"0")+" / SPECJALIZTA PHOTOGRAPHY";
 
-  img.onerror = () => {
-    photo.style.display = "none";
-    console.error("Nie znaleziono zdjęcia: " + img.src);
-  };
+img.onerror=()=>{
+photo.style.display="none";
+console.error("Nie znaleziono zdjęcia: "+img.src);
+};
 
-  photo.appendChild(img);
-  photo.appendChild(caption);
-  gallery.appendChild(photo);
+photo.appendChild(img);
+photo.appendChild(caption);
+gallery.appendChild(photo);
 });
 
-/* ROLKI - DODAJ TUTAJ LINKI DO SWOICH FILMÓW */
+/* ROLKI - DODAJ SWOJE LINKI */
+
 const reelLinks = [
   // "https://www.instagram.com/reel/TWOJ_LINK/"
 ];
 
-const reelsGrid = document.getElementById("reels-grid");
+const reelsGrid=document.getElementById("reels-grid");
 
-if (reelLinks.length === 0) {
-  reelsGrid.innerHTML = `
-    <div class="reels-empty">
-      <strong>ROLKI JUŻ WKRÓTCE</strong><br>
-      Moje materiały wideo pojawią się tutaj.
-    </div>
-  `;
-} else {
-  reelLinks.forEach((link,index) => {
-    const card = document.createElement("a");
-    card.className = "reel-card";
-    card.href = link;
-    card.target = "_blank";
-    card.rel = "noopener noreferrer";
+if(reelLinks.length===0){
+reelsGrid.innerHTML=`
+<div class="reels-empty">
+<strong>ROLKI JUŻ WKRÓTCE</strong><br>
+Moje materiały wideo pojawią się tutaj.
+</div>
+`;
+}else{
+reelLinks.forEach((link,index)=>{
+const card=document.createElement("a");
+card.className="reel-card";
+card.href=link;
+card.target="_blank";
+card.rel="noopener noreferrer";
 
-    card.innerHTML = `
-      <span>▶</span>
-      <strong>ROLKA ${String(index+1).padStart(2,"0")}</strong>
-      <small>OBEJRZYJ FILM ↗</small>
-    `;
+card.innerHTML=`
+<span>▶</span>
+<strong>ROLKA ${String(index+1).padStart(2,"0")}</strong>
+<small>OBEJRZYJ FILM ↗</small>
+`;
 
-    reelsGrid.appendChild(card);
-  });
+reelsGrid.appendChild(card);
+});
 }
 
-/* POWIĘKSZANIE ZDJĘĆ */
-const lightbox = document.getElementById("lightbox");
-const bigImage = document.getElementById("bigImage");
+/* LIGHTBOX */
 
-gallery.addEventListener("click",(event)=>{
-  const img = event.target.closest("img");
-  if(!img) return;
+const lightbox=document.getElementById("lightbox");
+const bigImage=document.getElementById("bigImage");
 
-  bigImage.src = img.src;
-  lightbox.classList.add("show");
+gallery.addEventListener("click",event=>{
+const img=event.target.closest("img");
+if(!img)return;
+
+bigImage.src=img.src;
+lightbox.classList.add("show");
 });
 
 lightbox.addEventListener("click",()=>{
-  lightbox.classList.remove("show");
+lightbox.classList.remove("show");
 });
+
+document.addEventListener("keydown",event=>{
+if(event.key==="Escape"){
+lightbox.classList.remove("show");
+closeMenu();
+}
+});
+
 </script>
 
 </body>
