@@ -30,11 +30,85 @@ h1 em{color:#c4a77c}
 section{padding:100px 8%}
 .kicker{color:#c4a77c;font-size:11px;letter-spacing:4px}
 h2{font:500 clamp(38px,6vw,60px) 'Playfair Display',serif;margin:15px 0 35px}
+
 .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
 .photo{position:relative;overflow:hidden;cursor:pointer;background:#151515}
 .photo img{width:100%;height:350px;object-fit:cover;display:block;transition:.5s}
 .photo:hover img{transform:scale(1.04)}
 .photo p{position:absolute;bottom:0;left:15px;letter-spacing:2px;font-size:11px;text-shadow:0 2px 8px black}
+
+/* ZAKŁADKI PORTFOLIO */
+.portfolio-tabs{
+display:flex;
+gap:15px;
+margin:0 0 35px;
+border-bottom:1px solid #252525;
+}
+.portfolio-tab{
+background:none;
+border:none;
+color:#888;
+font-family:Inter,sans-serif;
+font-size:12px;
+letter-spacing:2px;
+padding:15px 5px;
+cursor:pointer;
+border-bottom:2px solid transparent;
+transition:.3s;
+}
+.portfolio-tab.active{
+color:#c4a77c;
+border-bottom-color:#c4a77c;
+}
+.portfolio-panel[hidden]{display:none}
+
+.reels-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
+.reel-card{
+background:#151515;
+border:1px solid #252525;
+padding:30px;
+text-align:center;
+text-decoration:none;
+color:#f5f5f5;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+min-height:220px;
+transition:.3s;
+}
+.reel-card:hover{
+border-color:#c4a77c;
+transform:translateY(-3px);
+}
+.reel-card span{
+color:#c4a77c;
+font-size:28px;
+margin-bottom:15px;
+}
+.reel-card strong{
+font-size:13px;
+letter-spacing:2px;
+}
+.reel-card small{
+color:#888;
+font-size:11px;
+margin-top:10px;
+}
+.reels-empty{
+grid-column:1/-1;
+padding:60px 20px;
+text-align:center;
+border:1px solid #252525;
+color:#888;
+line-height:2;
+font-size:13px;
+}
+
 .about{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
 .about img{width:100%;height:450px;object-fit:cover}
 .about p,.contact p{color:#aaa;line-height:1.9;font-size:14px}
@@ -62,6 +136,7 @@ section{padding:70px 5%}
 .about img{height:350px}
 footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 .qr-code{width:175px;height:175px}
+.reels-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -88,7 +163,20 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 <section id="portfolio">
 <div class="kicker">WYBRANE KADRY / 2026</div>
 <h2>Portfolio.</h2>
+
+<div class="portfolio-tabs">
+<button class="portfolio-tab active" type="button" data-tab="photos">ZDJĘCIA</button>
+<button class="portfolio-tab" type="button" data-tab="reels">ROLKI</button>
+</div>
+
+<div class="portfolio-panel" id="photos-panel">
 <div class="gallery" id="gallery"></div>
+</div>
+
+<div class="portfolio-panel" id="reels-panel" hidden>
+<div class="reels-grid" id="reels-grid"></div>
+</div>
+
 </section>
 
 <section class="about" id="about">
@@ -155,6 +243,24 @@ window.addEventListener('load', () => {
   }
 });
 
+/* ZAKŁADKI ZDJĘCIA / ROLKI */
+const portfolioTabs = document.querySelectorAll(".portfolio-tab");
+const photosPanel = document.getElementById("photos-panel");
+const reelsPanel = document.getElementById("reels-panel");
+
+portfolioTabs.forEach(button => {
+  button.addEventListener("click", () => {
+    portfolioTabs.forEach(tab => tab.classList.remove("active"));
+    button.classList.add("active");
+
+    const selectedTab = button.dataset.tab;
+
+    photosPanel.hidden = selectedTab !== "photos";
+    reelsPanel.hidden = selectedTab !== "reels";
+  });
+});
+
+/* ZDJĘCIA */
 const imageNames = [
 "foto1.jpg.jpeg",
 "foto2.jpg.jpeg",
@@ -238,6 +344,39 @@ imageNames.forEach((name,index)=>{
   gallery.appendChild(photo);
 });
 
+/* ROLKI - DODAJ TUTAJ LINKI DO SWOICH FILMÓW */
+const reelLinks = [
+  // "https://www.instagram.com/reel/TWOJ_LINK/"
+];
+
+const reelsGrid = document.getElementById("reels-grid");
+
+if (reelLinks.length === 0) {
+  reelsGrid.innerHTML = `
+    <div class="reels-empty">
+      <strong>ROLKI JUŻ WKRÓTCE</strong><br>
+      Moje materiały wideo pojawią się tutaj.
+    </div>
+  `;
+} else {
+  reelLinks.forEach((link,index) => {
+    const card = document.createElement("a");
+    card.className = "reel-card";
+    card.href = link;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+
+    card.innerHTML = `
+      <span>▶</span>
+      <strong>ROLKA ${String(index+1).padStart(2,"0")}</strong>
+      <small>OBEJRZYJ FILM ↗</small>
+    `;
+
+    reelsGrid.appendChild(card);
+  });
+}
+
+/* POWIĘKSZANIE ZDJĘĆ */
 const lightbox = document.getElementById("lightbox");
 const bigImage = document.getElementById("bigImage");
 
