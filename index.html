@@ -43,14 +43,10 @@ section{padding:90px 8%}
 .kicker{color:#c4a77c;font-size:11px;letter-spacing:4px}
 h2{font:500 clamp(38px,6vw,60px) 'Playfair Display',serif;margin:15px 0 35px}
 
-/* ROZBUDOWANA STRONA GŁÓWNA */
+/* STRONA GŁÓWNA */
 
-.home-intro{
-max-width:850px;margin:auto;text-align:center;
-}
-.home-intro p{
-color:#aaa;line-height:2;font-size:15px;
-}
+.home-intro{max-width:850px;margin:auto;text-align:center}
+.home-intro p{color:#aaa;line-height:2;font-size:15px}
 .home-intro h2{margin-bottom:20px}
 
 .home-services{
@@ -62,7 +58,7 @@ display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:45px;
 }
 .service-card{
 border:1px solid #292929;padding:35px 25px;min-height:190px;
-transition:.3s;
+transition:.3s;display:block;text-decoration:none;color:#f5f5f5;
 }
 .service-card:hover{border-color:#c4a77c;transform:translateY(-4px)}
 .service-number{color:#c4a77c;font-size:12px;letter-spacing:2px}
@@ -74,9 +70,7 @@ font:500 25px 'Playfair Display',serif;margin:25px 0 12px;
 .home-story{
 display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
 }
-.home-story img{
-width:100%;height:420px;object-fit:cover;
-}
+.home-story img{width:100%;height:420px;object-fit:cover}
 .home-story p{color:#aaa;line-height:2;font-size:14px}
 .text-link{
 display:inline-block;margin-top:15px;color:#c4a77c;
@@ -110,7 +104,9 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;
 gap:15px;text-decoration:none;color:#f5f5f5;transition:.3s;
 }
 .social-card:hover{border-color:#c4a77c;transform:translateY(-4px)}
-.social-card svg{width:43px;height:43px;fill:none;stroke:#c4a77c;stroke-width:1.7}
+.social-card svg{
+width:43px;height:43px;fill:none;stroke:#c4a77c;stroke-width:1.7;
+}
 .social-card .tiktok-icon{fill:#c4a77c;stroke:none}
 .social-card strong{font-size:12px;letter-spacing:3px}
 .social-card small{font-size:10px;color:#888;letter-spacing:1px}
@@ -188,18 +184,27 @@ padding:35px;transform:translateX(-100%);transition:transform .3s ease;
 display:flex;justify-content:space-between;align-items:center;margin-bottom:65px;
 }
 .menu-close{background:none;border:none;color:white;font-size:28px;cursor:pointer}
-.menu-links{display:flex;flex-direction:column;gap:28px}
+
+/* Równe odstępy między głównymi pozycjami menu */
+.menu-links{
+display:flex;
+flex-direction:column;
+gap:28px;
+}
 .menu-links button{
 background:none;border:none;color:#eee;text-align:left;
 font-family:'Playfair Display',serif;font-size:27px;cursor:pointer;padding:0;
 }
 .menu-links button:hover{color:#c4a77c}
 
-/* Odstęp między PORTFOLIO a podzakładkami */
-.menu-portfolio{margin-bottom:22px}
+/* Mniejszy odstęp tylko pomiędzy PORTFOLIO a podzakładkami */
 .menu-sub{
-padding-left:20px;display:flex;flex-direction:column;gap:18px;
-border-left:1px solid #8d7656;margin-top:24px;
+padding-left:20px;
+display:flex;
+flex-direction:column;
+gap:18px;
+border-left:1px solid #8d7656;
+margin-top:17px;
 }
 .menu-sub button{
 font-family:Inter,sans-serif;font-size:13px;letter-spacing:2px;color:#aaa;
@@ -262,10 +267,10 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 <button data-page="about">O MNIE</button>
 
 <div>
-<button class="menu-portfolio" data-page="portfolio">PORTFOLIO</button>
+<button data-page="portfolio">PORTFOLIO</button>
 <div class="menu-sub">
 <button data-page="portfolio" data-tab="photos">ZDJĘCIA</button>
-<button data-page="portfolio" data-tab="reels">ROLKI</button>
+<button data-page="portfolio" data-tab="reels">WIDEO</button>
 </div>
 </div>
 
@@ -302,23 +307,27 @@ które sprawiają, że każdy kadr opowiada własną historię.
 <h2>Co tworzę?</h2>
 
 <div class="services-grid">
-<div class="service-card">
+
+<a href="#" class="service-card" id="photographyCard">
 <span class="service-number">01 / FOTO</span>
 <h3>Fotografia samochodowa</h3>
 <p>Sesje zdjęciowe, detale i wyjątkowe kadry pokazujące charakter samochodu.</p>
-</div>
+</a>
 
-<div class="service-card">
+<a href="https://www.instagram.com/reel/DatKxrLxhh7/?obrf=MWZoOTJ0cGp0YjBpcQ=="
+class="service-card" target="_blank" rel="noopener noreferrer">
 <span class="service-number">02 / VIDEO</span>
 <h3>Materiały wideo</h3>
 <p>Dynamiczne ujęcia i krótkie filmy, które pozwalają spojrzeć na motoryzację inaczej.</p>
-</div>
+</a>
 
-<div class="service-card">
+<a href="https://www.instagram.com/reel/DatKxrLxhh7/?obrf=MWZoOTJ0cGp0YjBpcQ=="
+class="service-card" target="_blank" rel="noopener noreferrer">
 <span class="service-number">03 / SOCIAL</span>
 <h3>Rolki motoryzacyjne</h3>
 <p>Krótkie materiały przygotowane z myślą o Instagramie i TikToku.</p>
-</div>
+</a>
+
 </div>
 </section>
 
@@ -391,7 +400,7 @@ target="_blank" rel="noopener noreferrer">
 
 <div class="portfolio-tabs">
 <button class="portfolio-tab active" data-tab="photos">ZDJĘCIA</button>
-<button class="portfolio-tab" data-tab="reels">ROLKI</button>
+<button class="portfolio-tab" data-tab="reels">WIDEO</button>
 </div>
 
 <div class="portfolio-panel" id="photos-panel">
@@ -532,6 +541,14 @@ showPage("portfolio");
 selectPortfolioTab("photos");
 });
 
+/* FOTOGRAFIA NA STRONIE GŁÓWNEJ */
+
+document.getElementById("photographyCard").addEventListener("click",event=>{
+event.preventDefault();
+showPage("portfolio");
+selectPortfolioTab("photos");
+});
+
 /* ZAKŁADKI PORTFOLIO */
 
 const portfolioTabs=document.querySelectorAll(".portfolio-tab");
@@ -636,36 +653,28 @@ photo.appendChild(caption);
 gallery.appendChild(photo);
 });
 
-/* ROLKI - DODAJ SWOJE LINKI */
+/* WIDEO */
 
-const reelLinks=[
-  // "https://www.instagram.com/reel/TWOJ_LINK/"
-];
+const videoLink="https://www.instagram.com/reel/DatKxrLxhh7/?obrf=MWZoOTJ0cGp0YjBpcQ==";
 
+const reelLinks=[videoLink];
 const reelsGrid=document.getElementById("reels-grid");
 
-if(reelLinks.length===0){
-reelsGrid.innerHTML=`
-<div class="reels-empty">
-<strong>ROLKI JUŻ WKRÓTCE</strong><br>
-Moje materiały wideo pojawią się tutaj.
-</div>
-`;
-}else{
 reelLinks.forEach((link,index)=>{
 const card=document.createElement("a");
 card.className="reel-card";
 card.href=link;
 card.target="_blank";
 card.rel="noopener noreferrer";
+
 card.innerHTML=`
 <span>▶</span>
-<strong>ROLKA ${String(index+1).padStart(2,"0")}</strong>
+<strong>WIDEO ${String(index+1).padStart(2,"0")}</strong>
 <small>OBEJRZYJ FILM ↗</small>
 `;
+
 reelsGrid.appendChild(card);
 });
-}
 
 /* LIGHTBOX */
 
