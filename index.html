@@ -125,6 +125,7 @@ font-size:11px;text-shadow:0 2px 8px black;
 }
 .portfolio-tabs{
 display:flex;gap:25px;margin:0 0 35px;border-bottom:1px solid #252525;
+flex-wrap:wrap;
 }
 .portfolio-tab{
 background:none;border:none;color:#888;font-family:Inter,sans-serif;
@@ -134,18 +135,13 @@ border-bottom:2px solid transparent;
 .portfolio-tab.active{color:#c4a77c;border-bottom-color:#c4a77c}
 .portfolio-panel[hidden]{display:none}
 .reels-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
-.reel-card{
-background:#151515;border:1px solid #252525;padding:30px;text-align:center;
-text-decoration:none;color:#f5f5f5;display:flex;flex-direction:column;
-align-items:center;justify-content:center;min-height:220px;transition:.3s;
-}
-.reel-card:hover{border-color:#c4a77c}
-.reel-card span{color:#c4a77c;font-size:28px;margin-bottom:15px}
-.reel-card strong{font-size:13px;letter-spacing:2px}
-.reel-card small{color:#888;font-size:11px;margin-top:10px}
 .reels-empty{
 grid-column:1/-1;padding:60px 20px;text-align:center;
 border:1px solid #252525;color:#888;line-height:2;font-size:13px;
+}
+.collab-portfolio-intro{
+max-width:750px;margin:0 auto 30px;text-align:center;
+color:#999;font-size:14px;line-height:2;
 }
 
 /* O MNIE */
@@ -185,7 +181,6 @@ display:flex;justify-content:space-between;align-items:center;margin-bottom:65px
 }
 .menu-close{background:none;border:none;color:white;font-size:28px;cursor:pointer}
 
-/* Równe odstępy między głównymi pozycjami menu */
 .menu-links{
 display:flex;
 flex-direction:column;
@@ -197,7 +192,6 @@ font-family:'Playfair Display',serif;font-size:27px;cursor:pointer;padding:0;
 }
 .menu-links button:hover{color:#c4a77c}
 
-/* Mniejszy odstęp tylko pomiędzy PORTFOLIO a podzakładkami */
 .menu-sub{
 padding-left:20px;
 display:flex;
@@ -240,6 +234,8 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 .reels-grid{grid-template-columns:1fr}
 .social-grid{gap:12px}
 .social-card{width:155px;min-height:155px}
+.portfolio-tabs{gap:12px}
+.portfolio-tab{font-size:10px;letter-spacing:1px}
 }
 </style>
 </head>
@@ -267,10 +263,11 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 <button data-page="about">O MNIE</button>
 
 <div>
-<button data-page="portfolio">PORTFOLIO</button>
+<button data-page="portfolio" data-tab="photos">PORTFOLIO</button>
 <div class="menu-sub">
 <button data-page="portfolio" data-tab="photos">ZDJĘCIA</button>
 <button data-page="portfolio" data-tab="reels">WIDEO</button>
+<button data-page="portfolio" data-tab="collabs">WSPÓŁPRACE Z FIRMAMI</button>
 </div>
 </div>
 
@@ -314,18 +311,16 @@ które sprawiają, że każdy kadr opowiada własną historię.
 <p>Sesje zdjęciowe, detale i wyjątkowe kadry pokazujące charakter samochodu.</p>
 </a>
 
-<a href="https://www.instagram.com/reel/DatKxrLxhh7/?obrf=MWZoOTJ0cGp0YjBpcQ=="
-class="service-card" target="_blank" rel="noopener noreferrer">
+<a href="#" class="service-card" id="videoCard">
 <span class="service-number">02 / VIDEO</span>
 <h3>Materiały wideo</h3>
 <p>Dynamiczne ujęcia i krótkie filmy, które pozwalają spojrzeć na motoryzację inaczej.</p>
 </a>
 
-<a href="https://www.instagram.com/reel/DatKxrLxhh7/?obrf=MWZoOTJ0cGp0YjBpcQ=="
-class="service-card" target="_blank" rel="noopener noreferrer">
-<span class="service-number">03 / SOCIAL</span>
-<h3>Rolki motoryzacyjne</h3>
-<p>Krótkie materiały przygotowane z myślą o Instagramie i TikToku.</p>
+<a href="#" class="service-card" id="collabCard">
+<span class="service-number">03 / WSPÓŁPRACE</span>
+<h3>Współprace z firmami</h3>
+<p>Tworzę rolki promocyjne dla sklepów, serwisów i firm z branży motoryzacyjnej.</p>
 </a>
 
 </div>
@@ -336,11 +331,6 @@ class="service-card" target="_blank" rel="noopener noreferrer">
 <div>
 <div class="kicker">KILKA SŁÓW O MNIE</div>
 <h2>Pasja zamieniona w kadry.</h2>
-<p>
-Nazywam się Mateusz Mikula, w sieci działam jako Specjalizta.
-Moja przygoda z fotografią i filmowaniem zaczęła się od pierwszego
-nagrania Audi RS6 oraz pierwszej sesji BMW E91.
-</p>
 <p>
 Z każdym kolejnym projektem rozwijam swoje umiejętności i szukam
 nowych sposobów na pokazanie piękna motoryzacji.
@@ -401,6 +391,7 @@ target="_blank" rel="noopener noreferrer">
 <div class="portfolio-tabs">
 <button class="portfolio-tab active" data-tab="photos">ZDJĘCIA</button>
 <button class="portfolio-tab" data-tab="reels">WIDEO</button>
+<button class="portfolio-tab" data-tab="collabs">WSPÓŁPRACE Z FIRMAMI</button>
 </div>
 
 <div class="portfolio-panel" id="photos-panel">
@@ -408,8 +399,29 @@ target="_blank" rel="noopener noreferrer">
 </div>
 
 <div class="portfolio-panel" id="reels-panel" hidden>
-<div class="reels-grid" id="reels-grid"></div>
+<div class="reels-grid">
+<div class="reels-empty">
+<h3>Materiały wideo już wkrótce.</h3>
+Pracuję nad nowymi realizacjami — niedługo pojawią się tutaj pierwsze filmy.
 </div>
+</div>
+</div>
+
+<div class="portfolio-panel" id="collabs-panel" hidden>
+<p class="collab-portfolio-intro">
+Tworzę rolki promocyjne i materiały wideo dla sklepów, serwisów
+oraz firm związanych z branżą motoryzacyjną.
+<br>
+Realizacje z naszych współprac pojawią się tutaj już wkrótce.
+</p>
+<div class="reels-grid">
+<div class="reels-empty">
+<h3>Współprace już wkrótce.</h3>
+W tym miejscu znajdziesz materiały przygotowane dla firm, sklepów i serwisów.
+</div>
+</div>
+</div>
+
 </section>
 </main>
 
@@ -541,7 +553,7 @@ showPage("portfolio");
 selectPortfolioTab("photos");
 });
 
-/* FOTOGRAFIA NA STRONIE GŁÓWNEJ */
+/* KAFELKI NA STRONIE GŁÓWNEJ */
 
 document.getElementById("photographyCard").addEventListener("click",event=>{
 event.preventDefault();
@@ -549,11 +561,24 @@ showPage("portfolio");
 selectPortfolioTab("photos");
 });
 
+document.getElementById("videoCard").addEventListener("click",event=>{
+event.preventDefault();
+showPage("portfolio");
+selectPortfolioTab("reels");
+});
+
+document.getElementById("collabCard").addEventListener("click",event=>{
+event.preventDefault();
+showPage("portfolio");
+selectPortfolioTab("collabs");
+});
+
 /* ZAKŁADKI PORTFOLIO */
 
 const portfolioTabs=document.querySelectorAll(".portfolio-tab");
 const photosPanel=document.getElementById("photos-panel");
 const reelsPanel=document.getElementById("reels-panel");
+const collabsPanel=document.getElementById("collabs-panel");
 
 function selectPortfolioTab(tabName){
 portfolioTabs.forEach(button=>{
@@ -561,6 +586,7 @@ button.classList.toggle("active",button.dataset.tab===tabName);
 });
 photosPanel.hidden=tabName!=="photos";
 reelsPanel.hidden=tabName!=="reels";
+collabsPanel.hidden=tabName!=="collabs";
 }
 
 portfolioTabs.forEach(button=>{
@@ -651,29 +677,6 @@ console.error("Nie znaleziono zdjęcia: "+img.src);
 photo.appendChild(img);
 photo.appendChild(caption);
 gallery.appendChild(photo);
-});
-
-/* WIDEO */
-
-const videoLink="https://www.instagram.com/reel/DatKxrLxhh7/?obrf=MWZoOTJ0cGp0YjBpcQ==";
-
-const reelLinks=[videoLink];
-const reelsGrid=document.getElementById("reels-grid");
-
-reelLinks.forEach((link,index)=>{
-const card=document.createElement("a");
-card.className="reel-card";
-card.href=link;
-card.target="_blank";
-card.rel="noopener noreferrer";
-
-card.innerHTML=`
-<span>▶</span>
-<strong>WIDEO ${String(index+1).padStart(2,"0")}</strong>
-<small>OBEJRZYJ FILM ↗</small>
-`;
-
-reelsGrid.appendChild(card);
 });
 
 /* LIGHTBOX */
