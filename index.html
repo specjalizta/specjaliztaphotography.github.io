@@ -14,40 +14,15 @@ body{margin:0;background:#090909;color:#f5f5f5;font-family:Inter,sans-serif}
 body.menu-open{overflow:hidden}
 
 header{
-height:75px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 5%;
-border-bottom:1px solid #252525;
-position:relative;
-z-index:20;
-background:#090909;
+height:75px;display:flex;align-items:center;justify-content:space-between;
+padding:0 5%;border-bottom:1px solid #252525;
+position:relative;z-index:20;background:#090909;
 }
-
 .logo{letter-spacing:3px;font-size:13px;font-weight:bold}
 .logo span{color:#b89b70}
-
-.menu-button{
-background:none;
-border:none;
-color:white;
-font-size:27px;
-cursor:pointer;
-padding:8px;
-line-height:1;
-}
-
-.menu-label{
-font-size:10px;
-letter-spacing:2px;
-margin-left:8px;
-}
-
-.header-left{
-display:flex;
-align-items:center;
-}
+.menu-button{background:none;border:none;color:white;font-size:27px;cursor:pointer;padding:8px;line-height:1}
+.menu-label{font-size:10px;letter-spacing:2px;margin-left:8px}
+.header-left{display:flex;align-items:center}
 
 .page{display:none}
 .page.active{display:block}
@@ -55,332 +30,195 @@ align-items:center;
 .hero{
 min-height:calc(100vh - 75px);
 background:linear-gradient(#0005,#0009),url('zdjecia/IMG_4201.jpeg') center/cover;
-display:flex;
-align-items:center;
-padding:8%;
+display:flex;align-items:center;padding:8%;
 }
-
-.hero p{
-letter-spacing:5px;
-color:#c4a77c;
-font-size:11px;
-}
-
-h1{
-font:500 clamp(48px,9vw,100px)/1.05 'Playfair Display',serif;
-margin:15px 0;
-}
-
+.hero p{letter-spacing:5px;color:#c4a77c;font-size:11px}
+h1{font:500 clamp(48px,9vw,100px)/1.05 'Playfair Display',serif;margin:15px 0}
 h1 em{color:#c4a77c}
-
 .hero a{
-display:inline-block;
-margin-top:25px;
-border:1px solid white;
-padding:16px 25px;
-color:white;
-text-decoration:none;
-font-size:11px;
-letter-spacing:2px;
+display:inline-block;margin-top:25px;border:1px solid white;
+padding:16px 25px;color:white;text-decoration:none;font-size:11px;letter-spacing:2px;
 }
-
 section{padding:90px 8%}
+.kicker{color:#c4a77c;font-size:11px;letter-spacing:4px}
+h2{font:500 clamp(38px,6vw,60px) 'Playfair Display',serif;margin:15px 0 35px}
 
-.kicker{
-color:#c4a77c;
-font-size:11px;
-letter-spacing:4px;
+/* ROZBUDOWANA STRONA GŁÓWNA */
+
+.home-intro{
+max-width:850px;margin:auto;text-align:center;
+}
+.home-intro p{
+color:#aaa;line-height:2;font-size:15px;
+}
+.home-intro h2{margin-bottom:20px}
+
+.home-services{
+border-top:1px solid #252525;
+border-bottom:1px solid #252525;
+}
+.services-grid{
+display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:45px;
+}
+.service-card{
+border:1px solid #292929;padding:35px 25px;min-height:190px;
+transition:.3s;
+}
+.service-card:hover{border-color:#c4a77c;transform:translateY(-4px)}
+.service-number{color:#c4a77c;font-size:12px;letter-spacing:2px}
+.service-card h3{
+font:500 25px 'Playfair Display',serif;margin:25px 0 12px;
+}
+.service-card p{font-size:13px;line-height:1.8;color:#888;margin:0}
+
+.home-story{
+display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.home-story img{
+width:100%;height:420px;object-fit:cover;
+}
+.home-story p{color:#aaa;line-height:2;font-size:14px}
+.text-link{
+display:inline-block;margin-top:15px;color:#c4a77c;
+text-decoration:none;font-size:11px;letter-spacing:2px;
+border-bottom:1px solid #8d7656;padding-bottom:8px;
 }
 
-h2{
-font:500 clamp(38px,6vw,60px) 'Playfair Display',serif;
-margin:15px 0 35px;
+.home-collab{
+text-align:center;background:#101010;border-top:1px solid #252525;
+border-bottom:1px solid #252525;
 }
+.home-collab p{color:#999;line-height:1.9;font-size:14px}
+.outline-link{
+display:inline-block;margin-top:20px;padding:15px 25px;
+border:1px solid #c4a77c;color:#c4a77c;
+text-decoration:none;font-size:11px;letter-spacing:2px;transition:.3s;
+}
+.outline-link:hover{background:#c4a77c;color:#090909}
+
+/* SOCIAL MEDIA */
+
+.social-section{text-align:center}
+.social-section h2{margin-bottom:15px}
+.social-section>p{color:#888;font-size:13px;line-height:1.8}
+.social-grid{
+display:flex;justify-content:center;gap:25px;flex-wrap:wrap;margin-top:40px;
+}
+.social-card{
+width:220px;min-height:180px;border:1px solid #292929;
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+gap:15px;text-decoration:none;color:#f5f5f5;transition:.3s;
+}
+.social-card:hover{border-color:#c4a77c;transform:translateY(-4px)}
+.social-card svg{width:43px;height:43px;fill:none;stroke:#c4a77c;stroke-width:1.7}
+.social-card .tiktok-icon{fill:#c4a77c;stroke:none}
+.social-card strong{font-size:12px;letter-spacing:3px}
+.social-card small{font-size:10px;color:#888;letter-spacing:1px}
 
 /* PORTFOLIO */
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-}
-
-.photo{
-position:relative;
-overflow:hidden;
-cursor:pointer;
-background:#151515;
-}
-
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.photo{position:relative;overflow:hidden;cursor:pointer;background:#151515}
 .photo img{
-width:100%;
-height:350px;
-object-fit:cover;
-display:block;
-transition:.5s;
+width:100%;height:350px;object-fit:cover;display:block;transition:.5s;
 }
-
 .photo:hover img{transform:scale(1.04)}
-
 .photo p{
-position:absolute;
-bottom:0;
-left:15px;
-letter-spacing:2px;
-font-size:11px;
-text-shadow:0 2px 8px black;
+position:absolute;bottom:0;left:15px;letter-spacing:2px;
+font-size:11px;text-shadow:0 2px 8px black;
 }
-
 .portfolio-tabs{
-display:flex;
-gap:25px;
-margin:0 0 35px;
-border-bottom:1px solid #252525;
+display:flex;gap:25px;margin:0 0 35px;border-bottom:1px solid #252525;
 }
-
 .portfolio-tab{
-background:none;
-border:none;
-color:#888;
-font-family:Inter,sans-serif;
-font-size:12px;
-letter-spacing:2px;
-padding:15px 5px;
-cursor:pointer;
+background:none;border:none;color:#888;font-family:Inter,sans-serif;
+font-size:12px;letter-spacing:2px;padding:15px 5px;cursor:pointer;
 border-bottom:2px solid transparent;
 }
-
-.portfolio-tab.active{
-color:#c4a77c;
-border-bottom-color:#c4a77c;
-}
-
+.portfolio-tab.active{color:#c4a77c;border-bottom-color:#c4a77c}
 .portfolio-panel[hidden]{display:none}
-
-.reels-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-}
-
+.reels-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
 .reel-card{
-background:#151515;
-border:1px solid #252525;
-padding:30px;
-text-align:center;
-text-decoration:none;
-color:#f5f5f5;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-min-height:220px;
-transition:.3s;
+background:#151515;border:1px solid #252525;padding:30px;text-align:center;
+text-decoration:none;color:#f5f5f5;display:flex;flex-direction:column;
+align-items:center;justify-content:center;min-height:220px;transition:.3s;
 }
-
 .reel-card:hover{border-color:#c4a77c}
 .reel-card span{color:#c4a77c;font-size:28px;margin-bottom:15px}
 .reel-card strong{font-size:13px;letter-spacing:2px}
 .reel-card small{color:#888;font-size:11px;margin-top:10px}
-
 .reels-empty{
-grid-column:1/-1;
-padding:60px 20px;
-text-align:center;
-border:1px solid #252525;
-color:#888;
-line-height:2;
-font-size:13px;
+grid-column:1/-1;padding:60px 20px;text-align:center;
+border:1px solid #252525;color:#888;line-height:2;font-size:13px;
 }
 
 /* O MNIE */
 
 .about{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:50px;
-align-items:center;
+display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;
 }
-
-.about img{
-width:100%;
-height:450px;
-object-fit:cover;
-}
-
-.about p,.contact p{
-color:#aaa;
-line-height:1.9;
-font-size:14px;
-}
+.about img{width:100%;height:450px;object-fit:cover}
+.about p,.contact p{color:#aaa;line-height:1.9;font-size:14px}
 
 /* KONTAKT */
 
-.contact{
-text-align:center;
-border-top:1px solid #252525;
+.contact{text-align:center;border-top:1px solid #252525}
+.contact a{color:#c4a77c;text-decoration:none}
+.contact-email{display:inline-block;margin-top:5px;font-size:15px}
+.contact-social{
+margin-top:65px;padding-top:45px;border-top:1px solid #252525;
 }
-
-.contact a{
-color:#c4a77c;
-text-decoration:none;
-}
-
-.contact-email{
-display:inline-block;
-margin-top:5px;
-font-size:15px;
-}
-
-.instagram-support{
-margin-top:65px;
-padding-top:45px;
-border-top:1px solid #252525;
-}
-
-.instagram-support h3{
-font:500 clamp(25px,4vw,36px) 'Playfair Display',serif;
-margin:15px 0;
-}
-
-.instagram-link{
-display:inline-block;
-margin:12px 0 25px;
-font-size:14px;
-letter-spacing:1px;
-}
-
-.qr-code{
-display:block;
-width:190px;
-height:190px;
-object-fit:contain;
-background:white;
-padding:10px;
-margin:15px auto;
-border-radius:4px;
-}
-
-.qr-caption{
-font-size:11px!important;
-color:#777!important;
-letter-spacing:1px;
+.contact-social h3{
+font:500 clamp(25px,4vw,36px) 'Playfair Display',serif;margin:15px 0;
 }
 
 /* MENU BOCZNE */
 
 .menu-overlay{
-position:fixed;
-inset:0;
-background:#000b;
-z-index:29;
-display:none;
+position:fixed;inset:0;background:#000b;z-index:29;display:none;
 }
-
 .menu-overlay.show{display:block}
-
 .side-menu{
-position:fixed;
-top:0;
-left:0;
-bottom:0;
-width:min(330px,85vw);
-background:#101010;
-border-right:1px solid #333;
-z-index:30;
-padding:35px;
-transform:translateX(-100%);
-transition:transform .3s ease;
+position:fixed;top:0;left:0;bottom:0;width:min(330px,85vw);
+background:#101010;border-right:1px solid #333;z-index:30;
+padding:35px;transform:translateX(-100%);transition:transform .3s ease;
 }
-
 .side-menu.show{transform:translateX(0)}
-
 .menu-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:65px;
+display:flex;justify-content:space-between;align-items:center;margin-bottom:65px;
 }
-
-.menu-close{
-background:none;
-border:none;
-color:white;
-font-size:28px;
-cursor:pointer;
-}
-
-.menu-links{
-display:flex;
-flex-direction:column;
-gap:28px;
-}
-
+.menu-close{background:none;border:none;color:white;font-size:28px;cursor:pointer}
+.menu-links{display:flex;flex-direction:column;gap:28px}
 .menu-links button{
-background:none;
-border:none;
-color:#eee;
-text-align:left;
-font-family:'Playfair Display',serif;
-font-size:27px;
-cursor:pointer;
-padding:0;
+background:none;border:none;color:#eee;text-align:left;
+font-family:'Playfair Display',serif;font-size:27px;cursor:pointer;padding:0;
 }
-
 .menu-links button:hover{color:#c4a77c}
 
+/* Odstęp między PORTFOLIO a podzakładkami */
+.menu-portfolio{margin-bottom:22px}
 .menu-sub{
-padding-left:20px;
-display:flex;
-flex-direction:column;
-gap:18px;
-border-left:1px solid #8d7656;
+padding-left:20px;display:flex;flex-direction:column;gap:18px;
+border-left:1px solid #8d7656;margin-top:24px;
 }
-
 .menu-sub button{
-font-family:Inter,sans-serif;
-font-size:13px;
-letter-spacing:2px;
-color:#aaa;
+font-family:Inter,sans-serif;font-size:13px;letter-spacing:2px;color:#aaa;
 }
-
 .menu-footer{
-position:absolute;
-bottom:35px;
-color:#777;
-font-size:10px;
-letter-spacing:2px;
+position:absolute;bottom:35px;color:#777;font-size:10px;letter-spacing:2px;
 }
 
 /* STOPKA I LIGHTBOX */
 
 footer{
-border-top:1px solid #252525;
-padding:30px 8%;
-color:#777;
-font-size:11px;
-letter-spacing:2px;
-display:flex;
-justify-content:space-between;
+border-top:1px solid #252525;padding:30px 8%;color:#777;
+font-size:11px;letter-spacing:2px;display:flex;justify-content:space-between;
 }
-
 .lightbox{
-display:none;
-position:fixed;
-inset:0;
-background:#000e;
-z-index:50;
-align-items:center;
-justify-content:center;
-padding:20px;
+display:none;position:fixed;inset:0;background:#000e;z-index:50;
+align-items:center;justify-content:center;padding:20px;
 }
-
-.lightbox img{
-max-width:95%;
-max-height:90%;
-object-fit:contain;
-}
-
+.lightbox img{max-width:95%;max-height:90%;object-fit:contain}
 .lightbox.show{display:flex}
 
 @media(max-width:650px){
@@ -389,11 +227,14 @@ section{padding:70px 5%}
 .hero{padding:5%;min-height:calc(100vh - 75px)}
 .gallery{grid-template-columns:1fr}
 .photo img{height:300px}
-.about{grid-template-columns:1fr}
+.about,.home-story{grid-template-columns:1fr}
 .about img{height:350px}
+.home-story img{height:330px}
+.services-grid{grid-template-columns:1fr}
 footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
-.qr-code{width:175px;height:175px}
 .reels-grid{grid-template-columns:1fr}
+.social-grid{gap:12px}
+.social-card{width:155px;min-height:155px}
 }
 </style>
 </head>
@@ -408,8 +249,6 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 <div class="logo">SPECJALIZTA<span>.</span></div>
 </header>
 
-<!-- MENU BOCZNE -->
-
 <div class="menu-overlay" id="menuOverlay"></div>
 
 <aside class="side-menu" id="sideMenu">
@@ -420,11 +259,10 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 
 <div class="menu-links">
 <button data-page="home">STRONA GŁÓWNA</button>
-
 <button data-page="about">O MNIE</button>
 
 <div>
-<button data-page="portfolio">PORTFOLIO</button>
+<button class="menu-portfolio" data-page="portfolio">PORTFOLIO</button>
 <div class="menu-sub">
 <button data-page="portfolio" data-tab="photos">ZDJĘCIA</button>
 <button data-page="portfolio" data-tab="reels">ROLKI</button>
@@ -440,6 +278,7 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 <!-- STRONA GŁÓWNA -->
 
 <main class="page active" id="home">
+
 <div class="hero">
 <div>
 <p>FOTOGRAFIA · MOJE KADRY</p>
@@ -447,6 +286,100 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 <a href="#" id="heroPortfolio">ODKRYJ PORTFOLIO ↗</a>
 </div>
 </div>
+
+<section class="home-intro">
+<div class="kicker">SPECJALIZTA PHOTOGRAPHY</div>
+<h2>Motoryzacja widziana z innej perspektywy.</h2>
+<p>
+Fotografia to dla mnie coś więcej niż zwykłe zdjęcie.
+To sposób na uchwycenie charakteru samochodu, emocji i detali,
+które sprawiają, że każdy kadr opowiada własną historię.
+</p>
+</section>
+
+<section class="home-services">
+<div class="kicker">MOJA TWÓRCZOŚĆ</div>
+<h2>Co tworzę?</h2>
+
+<div class="services-grid">
+<div class="service-card">
+<span class="service-number">01 / FOTO</span>
+<h3>Fotografia samochodowa</h3>
+<p>Sesje zdjęciowe, detale i wyjątkowe kadry pokazujące charakter samochodu.</p>
+</div>
+
+<div class="service-card">
+<span class="service-number">02 / VIDEO</span>
+<h3>Materiały wideo</h3>
+<p>Dynamiczne ujęcia i krótkie filmy, które pozwalają spojrzeć na motoryzację inaczej.</p>
+</div>
+
+<div class="service-card">
+<span class="service-number">03 / SOCIAL</span>
+<h3>Rolki motoryzacyjne</h3>
+<p>Krótkie materiały przygotowane z myślą o Instagramie i TikToku.</p>
+</div>
+</div>
+</section>
+
+<section class="home-story">
+<img src="zdjecia/IMG_4853(1).jpeg" alt="Fotografia motoryzacyjna">
+<div>
+<div class="kicker">KILKA SŁÓW O MNIE</div>
+<h2>Pasja zamieniona w kadry.</h2>
+<p>
+Nazywam się Mateusz Mikula, w sieci działam jako Specjalizta.
+Moja przygoda z fotografią i filmowaniem zaczęła się od pierwszego
+nagrania Audi RS6 oraz pierwszej sesji BMW E91.
+</p>
+<p>
+Z każdym kolejnym projektem rozwijam swoje umiejętności i szukam
+nowych sposobów na pokazanie piękna motoryzacji.
+</p>
+<a href="#" class="text-link" data-goto="about">POZNAJ MNIE LEPIEJ ↗</a>
+</div>
+</section>
+
+<section class="home-collab">
+<div class="kicker">WSPÓŁPRACA</div>
+<h2>Masz ciekawy samochód?</h2>
+<p>
+Chcesz stworzyć wyjątkową sesję zdjęciową lub materiał wideo?
+<br>Stwórzmy razem coś, co przyciągnie uwagę.
+</p>
+<a href="#" class="outline-link" data-goto="contact">SKONTAKTUJ SIĘ ZE MNĄ ↗</a>
+</section>
+
+<section class="social-section">
+<div class="kicker">BĄDŹ NA BIEŻĄCO</div>
+<h2>Social Media.</h2>
+<p>Znajdziesz tam moje najnowsze kadry, filmy i motoryzacyjne projekty.</p>
+
+<div class="social-grid">
+
+<a class="social-card" href="https://www.instagram.com/specjalizta/"
+target="_blank" rel="noopener noreferrer">
+<svg viewBox="0 0 24 24" aria-label="Instagram">
+<rect x="3" y="3" width="18" height="18" rx="5"/>
+<circle cx="12" cy="12" r="4"/>
+<circle cx="17.5" cy="6.5" r="1" fill="#c4a77c" stroke="none"/>
+</svg>
+<strong>INSTAGRAM</strong>
+<small>@SPECJALIZTA ↗</small>
+</a>
+
+<a class="social-card" href="https://www.tiktok.com/@specjalizta?_r=1&_t=ZN-9BNaQBUljio"
+target="_blank" rel="noopener noreferrer">
+<svg class="tiktok-icon" viewBox="0 0 24 24" aria-label="TikTok">
+<path d="M19.6 8.1c-1.8 0-3.5-.6-4.8-1.8v8.1a6.1 6.1 0 1 1-5.3-6v3.2a2.9 2.9 0 1 0 2.1 2.8V2.5h3.2c.2 2.2 2.1 4 4.8 4.1v1.5z"/>
+</svg>
+<strong>TIKTOK</strong>
+<small>@SPECJALIZTA ↗</small>
+</a>
+
+</div>
+</section>
+
 </main>
 
 <!-- PORTFOLIO -->
@@ -498,27 +431,34 @@ footer{padding:25px 5%;gap:15px;flex-wrap:wrap}
 specjalizta.cars@gmail.com
 </a>
 
-<div class="instagram-support">
-<div class="kicker">WSPARCIE</div>
-<h3>Możesz mnie też wesprzeć na Instagramie.</h3>
-<p>Zaobserwuj mój profil i bądź na bieżąco z nowymi kadrami!</p>
+<div class="contact-social">
+<div class="kicker">SOCIAL MEDIA</div>
+<h3>Znajdź mnie również tutaj.</h3>
+<p>Obserwuj moje profile i bądź na bieżąco z nowymi projektami!</p>
 
-<a class="instagram-link"
-href="https://www.instagram.com/specjalizta/"
-target="_blank"
-rel="noopener noreferrer">
-@SPECJALIZTA ↗
+<div class="social-grid">
+
+<a class="social-card" href="https://www.instagram.com/specjalizta/"
+target="_blank" rel="noopener noreferrer">
+<svg viewBox="0 0 24 24" aria-label="Instagram">
+<rect x="3" y="3" width="18" height="18" rx="5"/>
+<circle cx="12" cy="12" r="4"/>
+<circle cx="17.5" cy="6.5" r="1" fill="#c4a77c" stroke="none"/>
+</svg>
+<strong>INSTAGRAM</strong>
+<small>@SPECJALIZTA ↗</small>
 </a>
 
-<a href="https://www.instagram.com/specjalizta/"
-target="_blank"
-rel="noopener noreferrer">
-<img class="qr-code"
-src="https://raw.githubusercontent.com/specjalizta/specjaliztaphotography.github.io/main/zdjecia/qr-instagram.jpg.png"
-alt="Kod QR do mojego Instagrama">
+<a class="social-card" href="https://www.tiktok.com/@specjalizta?_r=1&_t=ZN-9BNaQBUljio"
+target="_blank" rel="noopener noreferrer">
+<svg class="tiktok-icon" viewBox="0 0 24 24" aria-label="TikTok">
+<path d="M19.6 8.1c-1.8 0-3.5-.6-4.8-1.8v8.1a6.1 6.1 0 1 1-5.3-6v3.2a2.9 2.9 0 1 0 2.1 2.8V2.5h3.2c.2 2.2 2.1 4 4.8 4.1v1.5z"/>
+</svg>
+<strong>TIKTOK</strong>
+<small>@SPECJALIZTA ↗</small>
 </a>
 
-<p class="qr-caption">ZESKANUJ KOD I ODWIEDŹ MÓJ PROFIL</p>
+</div>
 </div>
 </section>
 </main>
@@ -536,11 +476,11 @@ alt="Kod QR do mojego Instagrama">
 
 /* NAWIGACJA */
 
-const pages = document.querySelectorAll(".page");
-const sideMenu = document.getElementById("sideMenu");
-const menuOverlay = document.getElementById("menuOverlay");
-const menuButton = document.getElementById("menuButton");
-const menuClose = document.getElementById("menuClose");
+const pages=document.querySelectorAll(".page");
+const sideMenu=document.getElementById("sideMenu");
+const menuOverlay=document.getElementById("menuOverlay");
+const menuButton=document.getElementById("menuButton");
+const menuClose=document.getElementById("menuClose");
 
 function openMenu(){
 sideMenu.classList.add("show");
@@ -558,7 +498,6 @@ function showPage(pageName){
 pages.forEach(page=>{
 page.classList.toggle("active",page.id===pageName);
 });
-
 closeMenu();
 window.scrollTo(0,0);
 }
@@ -578,6 +517,15 @@ selectPortfolioTab(button.dataset.tab);
 });
 });
 
+/* LINKI NA STRONIE GŁÓWNEJ */
+
+document.querySelectorAll("[data-goto]").forEach(link=>{
+link.addEventListener("click",event=>{
+event.preventDefault();
+showPage(link.dataset.goto);
+});
+});
+
 document.getElementById("heroPortfolio").addEventListener("click",event=>{
 event.preventDefault();
 showPage("portfolio");
@@ -594,7 +542,6 @@ function selectPortfolioTab(tabName){
 portfolioTabs.forEach(button=>{
 button.classList.toggle("active",button.dataset.tab===tabName);
 });
-
 photosPanel.hidden=tabName!=="photos";
 reelsPanel.hidden=tabName!=="reels";
 }
@@ -607,7 +554,7 @@ selectPortfolioTab(button.dataset.tab);
 
 /* ZDJĘCIA */
 
-const imageNames = [
+const imageNames=[
 "foto1.jpg.jpeg",
 "foto2.jpg.jpeg",
 "foto3.jpeg",
@@ -677,8 +624,7 @@ img.alt="Fotografia "+(index+1);
 img.loading="lazy";
 
 const caption=document.createElement("p");
-caption.textContent=
-String(index+1).padStart(2,"0")+" / SPECJALIZTA PHOTOGRAPHY";
+caption.textContent=String(index+1).padStart(2,"0")+" / SPECJALIZTA PHOTOGRAPHY";
 
 img.onerror=()=>{
 photo.style.display="none";
@@ -692,7 +638,7 @@ gallery.appendChild(photo);
 
 /* ROLKI - DODAJ SWOJE LINKI */
 
-const reelLinks = [
+const reelLinks=[
   // "https://www.instagram.com/reel/TWOJ_LINK/"
 ];
 
@@ -712,13 +658,11 @@ card.className="reel-card";
 card.href=link;
 card.target="_blank";
 card.rel="noopener noreferrer";
-
 card.innerHTML=`
 <span>▶</span>
 <strong>ROLKA ${String(index+1).padStart(2,"0")}</strong>
 <small>OBEJRZYJ FILM ↗</small>
 `;
-
 reelsGrid.appendChild(card);
 });
 }
@@ -731,7 +675,6 @@ const bigImage=document.getElementById("bigImage");
 gallery.addEventListener("click",event=>{
 const img=event.target.closest("img");
 if(!img)return;
-
 bigImage.src=img.src;
 lightbox.classList.add("show");
 });
